@@ -7,17 +7,21 @@ function user(shouldBroadcast, host, port) {
   var socket = io.connect('http://' + host + ':' + port, {'force new connection': true});
 
   socket.on('connect', function() {
-
+    var chat = {text:"TEXT_"};
+    setInterval(function() {
+      ++count;
+      client.emit("chat", chat);
+    }, 333);
     // Start messaging loop
-    if (shouldBroadcast) {
-      // message will be broadcasted by server
-      socket.emit('broadcast', message);
-    } else {
-      // message will be echoed by server
-      socket.send(message);
-    }
+    // if (shouldBroadcast) {
+    //   // message will be broadcasted by server
+    //   socket.emit('broadcast', message);
+    // } else {
+    //   // message will be echoed by server
+    //   socket.send(message);
+    // }
 
-    socket.on('message', function(message) {
+    socket.on('chat', function(message) {
       socket.send(message);
     });
 
