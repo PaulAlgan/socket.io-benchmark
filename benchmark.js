@@ -8,9 +8,9 @@ function user(shouldBroadcast, host, port) {
 
   socket.on('connect', function() {
     var chat = {text:"TEXT_"};
-    // setInterval(function() {
-    //   socket.emit("chat", chat);
-    // }, 5000);
+    setInterval(function() {
+      socket.emit("chat", chat);
+    }, 5000);
     // Start messaging loop
     // if (shouldBroadcast) {
     //   // message will be broadcasted by server
@@ -20,9 +20,9 @@ function user(shouldBroadcast, host, port) {
     //   socket.send(message);
     // }
 
-    socket.on('chat', function(message) {
-      socket.send(message);
-    });
+    // socket.on('chat', function(message) {
+    //   socket.send(message);
+    // });
 
     socket.on('broadcastOk', function() {
       socket.emit('broadcast', message);
