@@ -10,7 +10,7 @@ function user(shouldBroadcast, host, port) {
     var chat = {text:"TEXT_"};
     setInterval(function() {
       socket.emit("chat", chat);
-    }, 333);
+    }, 2000);
     // Start messaging loop
     // if (shouldBroadcast) {
     //   // message will be broadcasted by server
