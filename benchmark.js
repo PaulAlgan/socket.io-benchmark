@@ -6,7 +6,7 @@ var connectionCount = 0;
 
 var options ={
   transports: ['websocket']
-  // ,'force new connection': true
+  ,'force new connection': true
 };
 
 function user(shouldBroadcast, host, port) {
