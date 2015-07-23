@@ -11,7 +11,7 @@ var options ={
 
 function user(shouldBroadcast, host, port) {
   var socket = io.connect('http://' + host + ':' + port, options);
-  console.log("Openint SOCKET");
+  console.log("Opening SOCKET");
   socket.on('connect', function() {
     connectionCount++;
     console.log("   SOCKET connect "+connectionCount);
