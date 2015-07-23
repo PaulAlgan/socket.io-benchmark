@@ -31,8 +31,9 @@ function user(shouldBroadcast, host, port) {
     });
   });
 
-  socket.on('connect_error', function() {
+  socket.on('connect_error', function(data) {
     console.log("connect_error");
+    console.log(data);
   });
 };
 
