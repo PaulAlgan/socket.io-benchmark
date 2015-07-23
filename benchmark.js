@@ -38,7 +38,7 @@ var users = parseInt(process.argv[argvIndex++]);
 var rampUpTime = parseInt(process.argv[argvIndex++]) * 1000; // in seconds
 var newUserTimeout = rampUpTime / users;
 var shouldBroadcast = process.argv[argvIndex++] === 'broadcast' ? true : false;
-var host = process.argv[argvIndex++] ? process.argv[argvIndex - 1]  : '54.251.48.123';
+var host = process.argv[argvIndex++] ? process.argv[argvIndex - 1]  : '54.251.48.117';
 var port = process.argv[argvIndex++] ? process.argv[argvIndex - 1]  : '1234';
 
 for(var i=0; i<users; i++) {
