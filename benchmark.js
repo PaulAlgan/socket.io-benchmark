@@ -30,6 +30,10 @@ function user(shouldBroadcast, host, port) {
       socket.emit('broadcast', message);
     });
   });
+
+  socket.on('connect_error', function() {
+    console.log("connect_error");
+  });
 };
 
 var argvIndex = 2;
