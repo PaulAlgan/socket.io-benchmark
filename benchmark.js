@@ -5,9 +5,10 @@ var message = "o bispo de constantinopla nao quer se desconstantinopolizar";
 var connectionCount = 0;
 function user(shouldBroadcast, host, port) {
   var socket = io.connect('http://' + host + ':' + port, {'force new connection': true});
-  connectionCount++;
+  console.log("Openint SOCKET");
   socket.on('connect', function() {
-    console.log("SOCKET connect "+connectionCount);
+    connectionCount++;
+    console.log("   SOCKET connect "+connectionCount);
     // var chat = {text:"TEXT_"};
     // setInterval(function() {
     //   socket.emit("chat", chat);
