@@ -3,8 +3,14 @@ var io = require('socket.io-client');
 
 var message = "o bispo de constantinopla nao quer se desconstantinopolizar";
 var connectionCount = 0;
+
+var options ={
+  transports: ['websocket'],
+  'force new connection': true
+};
+
 function user(shouldBroadcast, host, port) {
-  var socket = io.connect('http://' + host + ':' + port, {'force new connection': true});
+  var socket = io.connect('http://' + host + ':' + port, options);
   console.log("Openint SOCKET");
   socket.on('connect', function() {
     connectionCount++;
