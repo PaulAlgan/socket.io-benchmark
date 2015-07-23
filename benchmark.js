@@ -7,6 +7,7 @@ function user(shouldBroadcast, host, port) {
   var socket = io.connect('http://' + host + ':' + port, {'force new connection': true});
 
   socket.on('connect', function() {
+    console.log("SOCKET connect");
     // var chat = {text:"TEXT_"};
     // setInterval(function() {
     //   socket.emit("chat", chat);
