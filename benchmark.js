@@ -7,7 +7,7 @@ function user(shouldBroadcast, host, port) {
   var socket = io.connect('http://' + host + ':' + port, {'force new connection': true});
 
   socket.on('connect', function() {
-    var chat = {text:"TEXT_"};
+    // var chat = {text:"TEXT_"};
     // setInterval(function() {
     //   socket.emit("chat", chat);
     // }, 5000);
@@ -36,7 +36,7 @@ var users = parseInt(process.argv[argvIndex++]);
 var rampUpTime = parseInt(process.argv[argvIndex++]) * 1000; // in seconds
 var newUserTimeout = rampUpTime / users;
 var shouldBroadcast = process.argv[argvIndex++] === 'broadcast' ? true : false;
-var host = process.argv[argvIndex++] ? process.argv[argvIndex - 1]  : '54.251.48.129';
+var host = process.argv[argvIndex++] ? process.argv[argvIndex - 1]  : '54.251.48.117';
 var port = process.argv[argvIndex++] ? process.argv[argvIndex - 1]  : '1234';
 
 for(var i=0; i<users; i++) {
