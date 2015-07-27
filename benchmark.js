@@ -39,7 +39,8 @@ function user(shouldBroadcast, host, port) {
 
   socket.on('connect_error', function(data) {
     console.log("connect_error");
-    console.log(data);
+    // console.log(data);
+    console.log(data.description);
   });
 };
 
