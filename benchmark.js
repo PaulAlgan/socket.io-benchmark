@@ -46,8 +46,8 @@ function user(shouldBroadcast, host, port) {
 
   socket.on('connect_error', function(data) {
     console.log("connect_error");
-    // console.log(data);
-    console.log(data.description.target._events);
+    console.log(data);
+    // console.log(data.description.target._events);
   });
 
   function sendMsg(socket){
