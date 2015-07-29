@@ -16,7 +16,7 @@ function user(shouldBroadcast, host, port) {
 
     connectionCount++;
     console.log("   SOCKET connect "+connectionCount);
-    sendMsg(socket);
+    // sendMsg(socket);
 
     // var chat = {text:"TEXT_"};
     // setInterval(function() {
