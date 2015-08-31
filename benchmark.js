@@ -32,6 +32,14 @@ var room_id = "55e008ae66d27a5700021516"; // prod
 
 var urlHost;
 
+var msg_per_sec = 0;
+
+
+function printStat(){
+   console.log("MSG/S: ", msg_per_sec);
+   msg_per_sec = 0;
+}
+
 function user(shouldBroadcast, host, port) {
    var current_user = process.env.USER || '0';
    current_user = parseInt(current_user);
@@ -45,20 +53,23 @@ function user(shouldBroadcast, host, port) {
       console.log("   SOCKET connected "+connectionCount);
       var authenData = {token:users_list[current_user].token, user_id:users_list[current_user].user_id, name:users_list[current_user].name};
       socket.emit("authen", authenData, function(data){
-         console.log(   "AUTHEN SUCCESS");
-         // console.log(data.result.status);
-         // sendMsg();
+         console.log(   "AUTHEN SUCCESS", connectionCount);
 
-         setInterval(function(){
-           sendMsg(users_list[current_user].user_id);
-        },50);
 
-         // if (current_user === 0){
 
+         if (current_user === 1){
+            setInterval(function(){
+              sendMsg(users_list[current_user].user_id);
+           },50);
          //   setTimeout(function(){
          //      sendMsg(users_list[current_user].user_id);
          //   },1000);
-         // }
+         }
+         else if (current_user === 0){
+            setInterval(function(){
+               printStat();
+            },1000);
+         }
 
 
 
@@ -73,7 +84,8 @@ function user(shouldBroadcast, host, port) {
       socket.on('message', function(message) {
          if (message.sender_id != users_list[current_user].user_id) {
             // console.log("GET MSG FROM: "+message.sender_id+"  : "+message.text);
-            process.stdout.write("1 ");
+            msg_per_sec++;
+            // process.stdout.write("1 ");
             // setTimeout(function() {
             //    sendMsg(users_list[current_user].user_id);
             // }, 10);
@@ -122,10 +134,12 @@ function user(shouldBroadcast, host, port) {
 
    function sendMsg(from_id){
       var text = randomString({length: 10})+"_"+currentTimestamp();
+      var unique_id = randomString({length: 32});
       var messageData = {};
       messageData.sender_id = from_id;
       messageData.text = text;
       messageData.room_id = room_id;
+      messageData.unique_id = unique_id;
       messageData.client_created_time = "1439886389.931";
 
       var log_send = "Send: "+text;
